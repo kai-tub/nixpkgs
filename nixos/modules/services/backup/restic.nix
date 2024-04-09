@@ -296,9 +296,10 @@ in
             excludeFlags = optional (backup.exclude != []) "--exclude-file=${pkgs.writeText "exclude-patterns" (concatStringsSep "\n" backup.exclude)}";
             filesFromTmpFile = "/run/restic-backups-${name}/includes";
             doBackup = (backup.dynamicFilesFrom != null) || (backup.paths != null && backup.paths != []);
-            pruneCmd = optionals (builtins.length backup.pruneOpts > 0) [
+            pruneAndCheckCmd = optionals (builtins.length backup.pruneOpts > 0) [
               (resticCmd + " forget --prune " + (concatStringsSep " " backup.pruneOpts))
-              (resticCmd + " check " + (concatStringsSep " " backup.checkOpts))
+              ] ++ optionals (builtins.length backup.checkOpts > 0) [
+                (resticCmd + " check " + (concatStringsSep " " backup.checkOpts))
             ];
             # Helper functions for rclone remotes
             rcloneRemoteName = builtins.elemAt (splitString ":" backup.repository) 1;
