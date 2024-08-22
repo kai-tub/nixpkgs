@@ -1,0 +1,19 @@
+diff --git a/data/scripts/wayland-session b/data/scripts/wayland-session
+index bbeb7ce..0975e04 100755
+--- a/data/scripts/wayland-session
++++ b/data/scripts/wayland-session
+@@ -10,6 +10,8 @@
+ # Backup the user shell setting into SDDM specific variable
+ SDDM_USER_SHELL=$SHELL
+ 
++set -x
++
+ case $SHELL in
+   */bash)
+     [ -z "$BASH" ] && exec $SHELL --login $0 "$@"
+@@ -46,4 +48,4 @@ esac
+ # Restore user shell setting that may have been clobbered by setting environment
+ export SHELL=$SDDM_USER_SHELL
+ 
+-exec $@
++exec "$@"

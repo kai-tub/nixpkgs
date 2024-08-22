@@ -21,6 +21,7 @@ in stdenv.mkDerivation(finalAttrs: {
     ./greeter-path.patch
     ./sddm-ignore-config-mtime.patch
     ./sddm-default-session.patch
+    ./sddm-fix-expansion.patch
   ];
 
   postPatch = ''
