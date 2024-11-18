@@ -28,13 +28,15 @@ let
 in
 stdenv.mkDerivation {
   pname = "${ipuVersion}-camera-hal";
-  version = "unstable-2024-09-29";
+  version = "unstable-2024-11-15";
 
   src = fetchFromGitHub {
     owner = "intel";
     repo = "ipu6-camera-hal";
-    rev = "f98f72b156563fe8373e4f8d017a9f609676bb33";
-    hash = "sha256-zVcgKW7/GHYd1oMvsaI77cPyj3G68dL+OXBJDz5+Td4=";
+    # rev = "f98f72b156563fe8373e4f8d017a9f609676bb33";
+    rev = "7527bcc0a078fb5a8ea4da9eabf7866ddfb0da3d";
+    hash = "sha256-X/xHV/3cORwbAj2Inmwupkyx1M9cFPqanklWMBcrx70=";
+    # hash = "sha256-zVcgKW7/GHYd1oMvsaI77cPyj3G68dL+OXBJDz5+Td4=";
   };
 
   nativeBuildInputs = [
