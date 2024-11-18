@@ -227,6 +227,9 @@ let
         fi
         ln -sv ${configfile} $buildRoot/.config
 
+        # don't leak rust-lib-src paths into the final binary
+        ${lib.optionalString withRust ''export NIX_RUSTFLAGS="--remap-path-prefix ${rustPlatform.rustLibSrc}=/"''}
+
         # reads the existing .config file and prompts the user for options in
         # the current kernel source that are not found in the file.
         make $makeFlags "''${makeFlagsArray[@]}" oldconfig
