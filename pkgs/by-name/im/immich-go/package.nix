@@ -8,12 +8,12 @@
 }:
 buildGoModule rec {
   pname = "immich-go";
-  version = "0.22.1";
+  version = "0.24.7";
 
   src = fetchFromGitHub {
     owner = "simulot";
     repo = "immich-go";
-    rev = "${version}";
+    rev = "v${version}";
     hash = "sha256-6bLjHKkEghbY+UQFrgbfeHwOjtks1HjXbDXEr7DuJbU=";
 
     # Inspired by: https://github.com/NixOS/nixpkgs/blob/f2d7a289c5a5ece8521dd082b81ac7e4a57c2c5c/pkgs/applications/graphics/pdfcpu/default.nix#L20-L32
